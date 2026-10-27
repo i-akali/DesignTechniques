@@ -11,55 +11,68 @@ import java.util.*;
 
 public class Combiner {
 	
-	public static Map<String, Set<Integer>> combine(Map<String, Integer> map1, Map<String, Integer> map2) {
+//	public static Map<String, Set<Integer>> combine(Map<String, Integer> map1, Map<String, Integer> map2) {
+//
+//		List<Map<String, Integer>> maps = List.of(map1, map2);
+//
+//		Map<String, Set<Integer>> result = new TreeMap<>();
+//
+//		for (Map<String, Integer> map : maps) {
+//			for (Map.Entry<String, Integer> entry : map.entrySet()) {
+//				Set<Integer> values = result.getOrDefault(entry.getKey(), new HashSet<Integer>());
+//				values.add(entry.getValue());
+//				result.put(entry.getKey(), values);
+//			}
+//		}
+//
+//		return result;
+//	}
+//
+//	public static Map<String, Set<String>> combine(Map<String, String> map1, Map<String, String> map2, Map<String, String> map3) {
+//
+//		List<Map<String, String>> maps = List.of(map1, map2, map3);
+//
+//		Map<String, Set<String>> result = new TreeMap<>();
+//
+//		for (Map<String, String> map : maps) {
+//			for (Map.Entry<String, String> entry : map.entrySet()) {
+//				Set<String> values = result.getOrDefault(entry.getKey(), new HashSet<String>());
+//				values.add(entry.getValue());
+//				result.put(entry.getKey(), values);
+//			}
+//		}
+//
+//		return result;
+//	}
+//
+//	public static Map<Boolean, Set<String>> combine(Map<Boolean, String> map1, Map<Boolean, String> map2, Map<Boolean, String> map3, Map<Boolean, String> map4) {
+//
+//		List<Map<Boolean, String>> maps = List.of(map1, map2, map3, map4);
+//
+//		Map<Boolean, Set<String>> result = new TreeMap<>();
+//
+//		for (Map<Boolean, String> map : maps) {
+//			for (Map.Entry<Boolean, String> entry : map.entrySet()) {
+//				Set<String> values = result.getOrDefault(entry.getKey(), new HashSet<String>());
+//				values.add(entry.getValue());
+//				result.put(entry.getKey(), values);
+//			}
+//		}
+//
+//		return result;
+//	}
 
-		List<Map<String, Integer>> maps = List.of(map1, map2);
-		
-		Map<String, Set<Integer>> result = new TreeMap<>();
-		
-		for (Map<String, Integer> map : maps) {
-			for (Map.Entry<String, Integer> entry : map.entrySet()) {
-				Set<Integer> values = result.getOrDefault(entry.getKey(), new HashSet<Integer>());
-				values.add(entry.getValue());
-				result.put(entry.getKey(), values);
-			}
-		}
-		
-		return result;
-	}
-	
-	public static Map<String, Set<String>> combine(Map<String, String> map1, Map<String, String> map2, Map<String, String> map3) {
+    public static <K,V> Map<K,Set<V>> combine(Map<K,V> ... elements){
+        Map<K, Set<V>> result = new TreeMap<>();
+        for (Map<K, V> map : elements) {
+            for (Map.Entry<K, V> entry : map.entrySet()) {
+                Set<V> values = result.getOrDefault(entry.getKey(), new HashSet<>());
+                values.add(entry.getValue());
+                result.put(entry.getKey(), values);
+            }
+        }
 
-		List<Map<String, String>> maps = List.of(map1, map2, map3);
-
-		Map<String, Set<String>> result = new TreeMap<>();
-		
-		for (Map<String, String> map : maps) {
-			for (Map.Entry<String, String> entry : map.entrySet()) {
-				Set<String> values = result.getOrDefault(entry.getKey(), new HashSet<String>());
-				values.add(entry.getValue());
-				result.put(entry.getKey(), values);
-			}
-		}
-		
-		return result;
-	}
-	
-	public static Map<Boolean, Set<String>> combine(Map<Boolean, String> map1, Map<Boolean, String> map2, Map<Boolean, String> map3, Map<Boolean, String> map4) {
-
-		List<Map<Boolean, String>> maps = List.of(map1, map2, map3, map4);
-
-		Map<Boolean, Set<String>> result = new TreeMap<>();
-		
-		for (Map<Boolean, String> map : maps) {
-			for (Map.Entry<Boolean, String> entry : map.entrySet()) {
-				Set<String> values = result.getOrDefault(entry.getKey(), new HashSet<String>());
-				values.add(entry.getValue());
-				result.put(entry.getKey(), values);
-			}
-		}
-		
-		return result;
-	}
+        return result;
+    }
 
 }

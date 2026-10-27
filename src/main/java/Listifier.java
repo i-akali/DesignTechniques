@@ -68,7 +68,7 @@ public class Listifier {
 //		return unique;
 //	}
 
-    //Single method for simplify
+    //Single method for simplicity
     public static <E> List<E> listify(E ... elements){
         List<E> unique = new LinkedList<>();
         for(E n: elements) if(!unique.contains(n)) unique.add(n);
