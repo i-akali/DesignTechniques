@@ -9,12 +9,24 @@ import java.util.*;
 public class WordCounter {
 	
 	private DataSource source;
+    private static WordCounter instance;
 	
-	public WordCounter(DataSource source) { 
+	private WordCounter(DataSource source) {
 		this.source = source;
 	}
-		
-	public Map<String, Integer> countWords() {
+
+    public static WordCounter getInstance(){
+        if(instance == null){
+            return new WordCounter(null);
+        }
+        return instance;
+    }
+
+    public void setDataSource(DataSource s) {
+        source = s;
+    }
+
+    public Map<String, Integer> countWords() {
 		List<String> lines = source.read();
 		if (lines == null || lines.isEmpty()) {
 			return Collections.EMPTY_MAP;
