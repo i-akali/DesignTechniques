@@ -62,7 +62,8 @@ public class Combiner {
 //		return result;
 //	}
 
-    public static <K,V> Map<K,Set<V>> combine(Map<K,V> ... elements){
+    @SafeVarargs
+    public static <K extends Comparable<? super K>, V> Map<K,Set<V>> combine(Map<K,V> ... elements){
         Map<K, Set<V>> result = new TreeMap<>();
         for (Map<K, V> map : elements) {
             for (Map.Entry<K, V> entry : map.entrySet()) {

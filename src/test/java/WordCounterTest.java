@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class WordCounterTest {
 
     @Test
-    void datSourceNull() {
+    void dataSourceNull() {
 
         DataSource d3 = new DataSource("DataSource"){
             public List<String> read(){

@@ -69,6 +69,7 @@ public class Listifier {
 //	}
 
     //Single method for simplicity
+    @SafeVarargs
     public static <E> List<E> listify(E ... elements){
         List<E> unique = new LinkedList<>();
         for(E n: elements) if(!unique.contains(n)) unique.add(n);

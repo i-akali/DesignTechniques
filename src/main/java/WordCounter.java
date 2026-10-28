@@ -17,7 +17,7 @@ public class WordCounter {
 
     public static WordCounter getInstance(){
         if(instance == null){
-            return new WordCounter(null);
+            instance = new WordCounter(null);
         }
         return instance;
     }
